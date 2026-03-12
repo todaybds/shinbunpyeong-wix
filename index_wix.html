@@ -45,7 +45,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {display:none;}
 .mainp.newp .mcont_wrap ul li span span+span+span {margin-left:6vw;}
 
 /* 각 섹션 높이 지정 */
-.mcont01 {overflow:hidden; position:relative !important; background:#fff; height:1080px;}
+.mcont01 {overflow:hidden; position:relative !important; background:#fff; height:912px;}
 .mcont01 .top_bg {width:100%; height:100%; position:absolute; top:0; left:0%;
 	transition:all 3s ease .1s; background-size:150% !important;
 }
@@ -60,14 +60,14 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {display:none;}
 }
 .mcont01 .page span.cycle-pager-active {background:#fff;}
 
-.mcont02 {background:url('img/mloca_n.jpg')#efefed no-repeat right bottom; background-size:90%; height:1080px;}
+.mcont02 {background:url('img/mloca_n.jpg')#efefed no-repeat right bottom; background-size:90%; height:912px;}
 .mcont02 h2 {position:relative; text-align:left; margin-bottom:1vw;}
 .mcont02 dl {position:absolute; bottom:15%; left:7%; text-align:left; color:#15233d; font-size:1.6vw; letter-spacing:-0.1vw;
 	line-height:130%; font-weight:500;
 }
 .mcont02 dl dd div {font-weight:400; font-size:1.2vw; margin-bottom:0.5vw;}
 
-.mcont03 {background:#fff; position:relative !important; height:1080px;}
+.mcont03 {background:#fff; position:relative !important; height:912px;}
 .mcont01 .arrow, .mcont03 .arrow {position:absolute; top:50%; width:4vw; border:#aaa 1px solid;
 	border-radius:5vw; overflow:hidden; padding:1vw; margin-top:0; cursor:pointer; z-index:100
 }
@@ -110,7 +110,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {display:none;}
 .mcont03 .pager span {width:1vw; height:1vw; background:none; border:#d4a187 1px solid; opacity:1; margin:0 0.5vw;}
 .mcont03 .pager span.cycle-pager-active {background:#d4a187;}
 
-.mcont04 {background:#111; height:1080px;}
+.mcont04 {background:#111; height:912px;}
 .mcont04.view04:before {height:0;}
 .mcont04 .way {position:absolute; width:100%; height:100%; top:0; left:0; content:''; opacity:0; transition:all 0.5s ease .1s;}
 .mcont04 .way.on {opacity:0.6;}
@@ -198,7 +198,7 @@ img {max-width:100%;}
 
 .mcont04 {height:700px;}
 .mcont04 ol {position:relative; width:100%; display:flex; flex-direction:column; height:100%;}
-.mcont04 ol li {width:100%; height:auto; float:none; padding:30px 20px;}
+.mcont04 ol li {width:100%; height:auto; flex:1; float:none; padding:30px 20px; display:flex; flex-direction:column; justify-content:center;}
 .mcont04 ol li:before {opacity:0.25;}
 .mcont04 ol li>div {display:none;} /* 모바일: dl dt span에 이미 글자 있으므로 중복 제거 */
 .mcont04 ol li dl {position:relative; top:auto; left:auto; opacity:1; padding:0; font-size:12px;}
@@ -229,7 +229,7 @@ body {font-size:12px;}
 .mcont03 .pr_img .cycle-slide dl dt {font-size:12px;}
 .mcont03 .pager span {width:6px; height:6px;}
 
-.mcont04 ol li {padding:22px 15px;}
+.mcont04 ol li {padding:0 15px;}
 .mcont04 ol li>div {font-size:22px;}
 .mcont04 ol li dl {font-size:11px;}
 .mcont04 ol li dl dt {font-size:12px;}
