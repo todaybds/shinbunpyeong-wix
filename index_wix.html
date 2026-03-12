@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="css/reset-1.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, width=device-width">
+<title>신분평 더웨이시티</title>
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;600&display=swap" rel="stylesheet">
+<style>
+/*메인*/
+html, body {position:relative; overflow-x:hidden;}
+.mcont {position:relative !important; overflow:hidden !important;}
+.mcont h2 {font-size:4vw; font-family:'Seaside Display'; color:#15233d; width:100%;
+	text-align:center; line-height:100%;
+}
+.cycle-slideshow, .cycle-carousel-wrap, .cycle-sentinel, .cycle-slide {width:100%; height:100% !important;}
+
+/* ===== 풀페이지 제거: 각 섹션을 고정 높이로 세로 배치 ===== */
+.mcont_wrap {
+	width:100%; text-align:center;
+	/* 풀페이지 Cycle2 제거 → 일반 스크롤 */
+}
+.mcont_wrap ul {font-size:6vw; color:#d4a187; line-height:120%; top:18%; position:absolute; width:50%; left:25%;}
+.mcont_wrap ul li {padding-top:0; opacity:0; transition:all 1s ease .1s;}
+.mcont_wrap ul li.on {padding-top:0; opacity:1;}
+.mcont_wrap ul li:first-child {font-size:1.6vw; font-weight:300; line-height:150%; margin-bottom:1.5vw;}
+
+.mainp.newp:before {display:none;}
+.mainp.newp .mcont_wrap ul {color:#15233d; width:80%; left:10%; transition:all 0.5s ease .1s;}
+.mainp.newp .mcont_wrap ul li:first-child {font-size:2.4vw;}
+.mainp.newp .mcont_wrap ul li>span {font-weight:600; position:relative; display:block; font-size:3.4vw; line-height:160%;}
+.mainp.newp .mcont_wrap ul li span span {position:absolute; width:2vw; height:2vw; background:#15233d;
+	border-radius:10vw; left:50%; top:-0.5vw; opacity:0; transition:all 0.5s ease .1s;
+}
+.mainp.newp .mcont_wrap ul li span span.on {top:0.3vw; opacity:1; height:0.5vw; width:0.5vw; left:50.2%;}
+.mainp.newp .mcont_wrap ul li span span+span {margin-left:3vw;}
+.mainp.newp .mcont_wrap ul li span span+span+span {margin-left:6vw;}
+
+/* 각 섹션 높이 지정 */
+.mcont01 {overflow:hidden; position:relative !important; background:#fff; height:100vh;}
+.mcont01 .top_bg {width:100%; height:100%; position:absolute; top:0; left:0%;
+	transition:all 3s ease .1s; background-size:150% !important;
+}
+.mcont01 .bg01 {background:url('img/mimg_new.jpg')top center;}
+.mcont01 .cycle-slide-active.bg01 {background:url('img/mimg_new.jpg')bottom center;}
+.mcont01 .bg02 {background:url('img/mimg02.jpg')bottom -15vh center;}
+.mcont01 .cycle-slide-active.top_bg {background-size:100% !important;}
+.mcont01 ul {z-index:1000;}
+.mcont01 .btn_roll {z-index:1000; position:absolute; bottom:3vw; left:40%; width:20%;}
+.mcont01 .page span {width:1vw; height:1vw; background:none; border:#fff 2px solid; opacity:1; margin:0 0.5vw;
+	display:inline-block; text-indent:-9999px; border-radius:10vw; cursor:pointer;
+}
+.mcont01 .page span.cycle-pager-active {background:#fff;}
+
+.mcont02 {background:url('img/mloca_n.jpg')#efefed no-repeat right bottom; background-size:90%; height:100vh;}
+.mcont02 h2 {position:relative; text-align:left; margin-bottom:1vw;}
+.mcont02 dl {position:absolute; bottom:15%; left:7%; text-align:left; color:#15233d; font-size:1.6vw; letter-spacing:-0.1vw;
+	line-height:130%; font-weight:500;
+}
+.mcont02 dl dd div {font-weight:400; font-size:1.2vw; margin-bottom:0.5vw;}
+
+.mcont03 {background:#fff; position:relative !important; height:100vh;}
+.mcont01 .arrow, .mcont03 .arrow {position:absolute; top:50%; width:4vw; border:#aaa 1px solid;
+	border-radius:5vw; overflow:hidden; padding:1vw; margin-top:0; cursor:pointer; z-index:100
+}
+.mcont01 .arrow {border:0; margin-top:-3vw; width:5vw;}
+.mcont01 .arrow_l, .mcont03 .arrow_l {left:3%; transform:rotate(-180deg);}
+.mcont01 .arrow_l {left:10%;}
+.mcont03 .arrow_r {right:3%;}
+.mcont01 .arrow_r {right:10%;}
+.mcont03 .pr_img {position:absolute; top:24vh; left:13%; border:#15243d 0.25vw solid; border-radius:100vw;}
+.mcont03 .pr_img .cycle-slideshow {position:absolute !important; top:0 !important; overflow:unset !important;}
+.mcont03 .pr_img .cycle-slide {position:absolute !important; top:0 !important;}
+.mcont03 .pr_img img {height:60vh; position:relative; z-index:110; opacity:0;}
+.mcont03 .pr_img .tt {position:absolute; top:42%; left:130%; z-index:3; color:#15233d; font-size:4.5vw;
+	font-family:'Seaside Display'; white-space: nowrap; transition:all 0.5s ease .1s; opacity:0;
+}
+.mcont03 .pr_img .img {position:absolute; width:70%; height:70%; top:15%; left:15%; border-radius:100%;
+	transition:all 1s ease .1s; opacity:0; border:#15243d 0.6vw solid;
+}
+.mcont03 .pr_img .img:before {position:absolute; width:126%; height:126%; top:calc(-13% - 0.25vw); left:calc(-13% - 0.25vw); border:red 0.25vw solid; border-radius:100vw; content:'';}
+.mcont03 .pr_img .w01 .img {background:url('img/mprem01.jpg')center center; background-size:cover;}
+.mcont03 .pr_img .w02 .img {background:url('img/mprem02.jpg')center center; background-size:cover;}
+.mcont03 .pr_img .w03 .img {background:url('img/mprem03.jpg')center center; background-size:cover;}
+.mcont03 .pr_img .w04 .img {background:url('img/mprem04.jpg')center center; background-size:cover;}
+.mcont03 .wbg {position:absolute; width:100%; height:100%; top:0; left:0; background:#fff; content:'';
+	opacity:0; filter:blur(3px) grayscale(100%); transition:all 0.7s ease .1s; z-index:-1;
+}
+.mcont03 .wbg.on {opacity:0.1;}
+.mcont03 .wbg01 {background:url('img/mprem01.jpg')center center;	background-size:cover;}
+.mcont03 .wbg02 {background:url('img/mprem02.jpg')center center;	background-size:cover;}
+.mcont03 .wbg03 {background:url('img/mprem03.jpg')center center;	background-size:cover;}
+.mcont03 .wbg04 {background:url('img/mprem04.jpg')center center;	background-size:cover;}
+.mcont03 .pr_img .cycle-slide dl {position:absolute; left:140%; white-space: nowrap; text-align:left; font-size:1vw;
+ line-height:170%; top:57%; opacity:0; transition:all 1s ease .1s; color:#15233d;
+}
+.mcont03 .pr_img .cycle-slide dl dt {font-size:1.6vw; margin-bottom:1.2vw; font-weight:500;}
+.mcont03 .pr_img .cycle-slide-active .tt {left:113%; opacity:1;}
+.mcont03 .pr_img .cycle-slide-active .img {opacity:1;}
+.mcont03 .pr_img .cycle-slide-active dl {left:120%; opacity:1;}
+.mcont03 .pager {top:25%; left:auto; right:15%; opacity:1; width:10vw;}
+.mcont03 .pager span {width:1vw; height:1vw; background:none; border:#d4a187 1px solid; opacity:1; margin:0 0.5vw;}
+.mcont03 .pager span.cycle-pager-active {background:#d4a187;}
+
+.mcont04 {background:#111; height:100vh;}
+.mcont04.view04:before {height:0;}
+.mcont04 .way {position:absolute; width:100%; height:100%; top:0; left:0; content:''; opacity:0; transition:all 0.5s ease .1s;}
+.mcont04 .way.on {opacity:0.6;}
+.mcont04 .way01 {background:url('img/mway01.jpg')center center; background-size:cover;}
+.mcont04 .way02 {background:url('img/mway02.jpg')center center; background-size:cover;}
+.mcont04 .way03 {background:url('img/mway03.jpg')center center; background-size:cover;}
+.mcont04 .way04 {background:url('img/mway04.jpg')center center; background-size:cover;}
+.mcont04 .way05 {background:url('img/mway05.jpg')center center; background-size:cover;}
+.mcont04 ol {width:100%; height:100%; margin:0; padding:0; position:absolute;}
+.mcont04 ol li {float:left; width:20%; height:100%; position:relative; cursor:pointer;}
+.mcont04 ol li:before {position:absolute; width:100%; height:100%; top:0; left:0; content:''; opacity:0.3; z-index:2;
+	transition:all 1s ease .1s;
+}
+.mcont04 ol li.c01:before{background:url('img/mway01.jpg')center left; background-size:cover;}
+.mcont04 ol li.c02:before{background:url('img/mway02.jpg')center center; background-size:cover;}
+.mcont04 ol li.c03:before{background:url('img/mway03.jpg')center center; background-size:cover;}
+.mcont04 ol li.c04:before{background: url('img/mway04.jpg')calc(100% - 20%) center; background-size:cover;}
+.mcont04 ol li.c05:before{background:url('img/mway05.jpg')center right; background-size:cover;}
+.mcont04 ol li.off:before {opacity:0;}
+.mcont04 ol li>div {font-size:4vw; color:#fff; top:0; position:relative; width:100%; z-index:2; height:100%;
+	 display:flex; align-items:center; justify-content: center; transition:all 0.5s ease .1s; font-weight:500;
+}
+.mcont04 ol li p {position:absolute; width:100%; height:100%; top:0; left:0; content:''; opacity:0;
+	transition:all 0.5s ease .1s; background:#111; z-index:2;
+}
+.mcont04 ol li.on p {opacity:0.4;}
+.mcont04 ol li:after {position:absolute; width:1px; height:100%; top:0; left:0; content:''; opacity:0.1;
+	background:#fff; z-index:2;
+}
+.mcont04 ol li.c01:after {display:none;}
+.mcont04 ol li.on>div {opacity:0; height:92%;}
+.mcont04 ol li dl {position:absolute; width:100%; top:50%; left:0; transition:all 0.5s ease .1s; padding:0 2vw; opacity:0;
+	z-index:3; color:#fff; font-weight:300; font-size:1vw; line-height:160%;
+}
+.mcont04 ol li dl dt {font-size:1.3vw; margin-bottom:1.5vw; font-weight:500;}
+.mcont04 ol li dl dt span {font-size:3vw; color:#d4a187;}
+.mcont04 ol li.on dl {top:45%; opacity:1;}
+
+/* pager 공통 */
+.pager {position:absolute; z-index:1000; text-align:center;}
+.pager span {width:15px; height:15px; background:#fff; display:inline-block !important; text-indent:-9999px; margin:0 5px; cursor:pointer; border-radius:20px; opacity:0.5;}
+.pager span.cycle-pager-active {background:#e9b670; opacity:1;}
+
+/* 불필요 요소 숨김 (Iframe 전용) */
+.popup, .bi_poong, .r_menu, #header, #footer, .quick, .btn_all, .arrow_scroll {display:none !important;}
+
+/* ===== 모바일 ===== */
+@media all and (max-width:1099px) {
+img {max-width:100%;}
+.mcont h2 {font-size:24px; margin-bottom:10px}
+
+.mcont01 {height:60vh;}
+.mcont01 .top_bg {width:100%; height:100%; position:absolute; top:0; left:0%;
+	transition:all 3s ease .1s; transform: scale(1.2);
+}
+.mcont01 .bg01.top_bg {background:url('img/mimg_new.jpg')bottom center; background-size:cover !important;}
+.mcont01 .bg02.top_bg {background:url('img/mimg02.jpg')bottom center; background-size:cover !important;}
+.mcont01 .cycle-slide-active.top_bg {transform: scale(1);}
+.mcont01 .page span {width:15px; height:15px; margin:0 10px;}
+.mcont01 .arrow {width:30px;}
+.mcont01 .arrow_l {left:15px;}
+.mcont01 .arrow_r {right:15px;}
+
+.mainp.newp .mcont_wrap ul li:first-child {font-size:22px; line-height:35px}
+.mainp.newp .mcont_wrap ul li>span {font-size:26px;}
+.mainp.newp .mcont_wrap ul li span {display:block;}
+.mainp.newp .mcont_wrap ul li span span {width:16px; height:16px; border-radius:20px; top:-1vw;}
+.mainp.newp .mcont_wrap ul li span span.on {top:-2px; opacity:1; height:4px; width:4px;}
+.mainp.newp .mcont_wrap ul li span span+span {margin-left:23px;}
+.mainp.newp .mcont_wrap ul li span span+span+span {margin-left:46px;}
+
+.mcont02 {background: url(img/mloca_n.jpg) #efefed no-repeat top left -100px; background-size:150%; height:50vh;}
+.mcont02 dl {font-size:14px; line-height:150%; letter-spacing:-1px; bottom:8%;}
+.mcont02 dl dd div {font-size:12px}
+
+.mcont03 {height:auto; min-height:70vh; padding-bottom:30px;}
+.mcont03 .arrow {display:none;}
+.mcont03 .pager {top:90px; right:5%; width:50%; text-align:right;}
+.mcont03 .pager span {width:7px; height:7px; margin:0 0 0 10px; text-indent:-9999px; overflow:hidden;}
+.mcont03 .pr_img {width:150px; height:150px; left:10%; top:35%;}
+.mcont03 .pr_img img {height:150px;}
+.mcont03 .pr_img .tt {font-size:30px; line-height:30px; text-align:left; top:34%;}
+.mcont03 .pr_img .cycle-slide dl {font-size:11px; font-weight:400; left:16%; top:170px;}
+.mcont03 .pr_img .cycle-slide dl dt {font-size:14px;}
+
+.mcont04 {height:auto; min-height:50vh;}
+.mcont04 ol {position:relative; width:100%; display:flex; flex-direction:column;}
+.mcont04 ol li {width:100%; height:auto; float:none; padding:30px 20px;}
+.mcont04 ol li:before {opacity:0.25;}
+.mcont04 ol li>div {display:none;} /* 모바일: dl dt span에 이미 글자 있으므로 중복 제거 */
+.mcont04 ol li dl {position:relative; top:auto; left:auto; opacity:1; padding:0; font-size:12px;}
+.mcont04 ol li dl dt {font-size:14px; margin-bottom:8px;}
+.mcont04 ol li dl dt span {font-size:28px;}
+.mcont04 ol li:after {height:1px; width:100%; top:auto; bottom:0; left:0; opacity:0.1;}
+
+.mcont_wrap ul {font-size:30px; line-height:40px; width:100%; left:0;}
+.mcont_wrap ul li:first-child {font-size:15px; margin-bottom:20px;}
+}
+
+/* ===== 320px WIX 구형에디터 모바일 ===== */
+@media all and (max-width:320px) {
+body {font-size:12px;}
+.mcont01 {height:45vh;}
+.mainp.newp .mcont_wrap ul li:first-child {font-size:16px; line-height:24px;}
+.mainp.newp .mcont_wrap ul li>span {font-size:18px;}
+
+.mcont02 {height:40vh; background-size:200%;}
+.mcont02 dl {font-size:12px; line-height:140%;}
+.mcont02 dl dd div {font-size:11px;}
+
+.mcont03 {min-height:60vh;}
+.mcont03 .pr_img {width:110px; height:110px; left:5%; top:30%;}
+.mcont03 .pr_img img {height:110px;}
+.mcont03 .pr_img .tt {font-size:22px; line-height:22px;}
+.mcont03 .pr_img .cycle-slide dl {font-size:10px; top:130px; left:10%;}
+.mcont03 .pr_img .cycle-slide dl dt {font-size:12px;}
+.mcont03 .pager span {width:6px; height:6px;}
+
+.mcont04 ol li {padding:22px 15px;}
+.mcont04 ol li>div {font-size:22px;}
+.mcont04 ol li dl {font-size:11px;}
+.mcont04 ol li dl dt {font-size:12px;}
+.mcont04 ol li dl dt span {font-size:22px;}
+}
+</style>
+<body class="mainp newp">
+	<!-- 풀페이지 아님: 일반 div로 감싸기 -->
+	<div class="mcont_wrap">
+		<div class="mcont mcont01">
+			<ul class="cont">
+				<li class="t01">
+					교통도! 규모도! 비전도!
+					<span>
+						청주에 없던 압도적 클래스
+						<span class="po01"></span>
+						<span class="po02"></span>
+						<span class="po03"></span>
+					</span>
+				</li>
+			</ul>
+			<div class="top_bg_wrap cycle-slideshow" data-cycle-swipe="true" data-cycle-slides=".top_bg" data-cycle-timeout="4000" data-cycle-fx="fade" data-cycle-pager=".btn_roll .page" data-cycle-prev=".mcont01 .arrow_l" data-cycle-next=".mcont01 .arrow_r" data-cycle-carousel-fluid="false" data-allow-wrap="true" data-cycle-speed="700" data-cycle-easing="easeInOutQuart">
+				<div class="top_bg bg01"></div>
+				<div class="top_bg bg02"></div>
+			</div>
+			<img src="img/arrow_r.png" alt="" class="arrow arrow_l">
+			<img src="img/arrow_r.png" alt="" class="arrow arrow_r">
+		</div>
+		<div class="mcont mcont02">
+			<dl>
+				<dt><h2>LOCATION</h2></dt>
+				<dd>
+					<div>1·2·3순환로와 빠르게 통하는 교통의 중심!</div>
+					약 3만 7천 세대 청주 신흥주거벨트를 이끄는<br>
+					신분평 더웨이시티!
+				</dd>
+			</dl>
+		</div>
+		<div class="mcont mcont03">
+			<div class="wbg wbg01"></div>
+			<div class="wbg wbg02"></div>
+			<div class="wbg wbg03"></div>
+			<div class="wbg wbg04"></div>
+
+			<div class="pager"></div>
+			<img src="img/arrow_r.png" alt="" class="arrow arrow_l">
+			<img src="img/arrow_r.png" alt="" class="arrow arrow_r">
+			<div class="pr_img">
+				<img src="img/mprem_bg.png" alt="">
+				<div class="cycle-slideshow" data-cycle-swipe="true" data-cycle-slides=".wrap" data-cycle-timeout="0" data-cycle-fx="fade" data-cycle-pager=".pager" data-cycle-prev=".mcont03 .arrow_l" data-cycle-next=".mcont03 .arrow_r" data-cycle-carousel-fluid="false" data-allow-wrap="true" data-cycle-speed="700" data-cycle-easing="easeInOutQuart">
+					<div class="wrap w01">
+						<div class="tt">Perfect <span class="br"></span>Traffic</div>
+						<div class="img"></div>
+						<dl>
+							<dt>어디든 빠르게 쾌속 교통망</dt>
+							<dd>청주 전역을 빠르게 이어주는 1·2·3순환로 이동 용이</dd>
+							<dd>대전으로의 접근성을 높여주는 17번 국도 바로 앞</dd>
+							<dd>강서 IC를 통한 중부고속도로 접근성 우수</dd>
+						</dl>
+					</div>
+					<div class="wrap w02">
+						<div class="tt">Perfect <span class="br"></span>Vision</div>
+						<div class="img"></div>
+						<dl>
+							<dt>청주 최대규모 비전 중심지</dt>
+							<dd>청주 최대 규모 도시개발사업 프리미엄의 첫 자리</dd>
+							<dd>분평2지구(계획), 분평미평지구(예정) 등 청주 개발비전 최대 수혜지</dd>
+							<dd>충청권 광역급행철도(계획) 개발 비전</dd>
+						</dl>
+					</div>
+					<div class="wrap w03">
+						<div class="tt">Perfect <span class="br"></span>Nature</div>
+						<div class="img"></div>
+						<dl>
+							<dt>맑고 깨끗한 청정 생활권</dt>
+							<dd>무심천, 미평천 등 쾌적한 자연환경이 가까운 자리</dd>
+							<dd>인근 산업단지의 매연 직접 영향권이 아닌 청정 입지</dd>
+							<dd>지구 내 다양한 공원 특화가 적용될 그린 프리미엄</dd>
+						</dl>
+					</div>
+					<div class="wrap w04">
+						<div class="tt">Perfect <span class="br"></span>Infra</div>
+						<div class="img"></div>
+						<dl>
+							<dt>살수록 완벽해질 생활 인프라</dt>
+							<dd>대형마트, 산남동 학원가 등 편리한 생활 인프라</dd>
+							<dd>지구 내 초교부지(계획)으로 더 우수해질 교육환경</dd>
+							<dd>단지 내 근린생활시설에 다양한 생활편의시설 입점 예정</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mcont mcont04">
+			<ol>
+				<li class="c01">
+					<div>더</div>
+					<dl>
+						<dt><span>더</span>압도적인 프리미엄</dt>
+						<dd>
+							약 3만 7천 세대 스케일의 신흥주거벨트
+							비전을 선점하는 첫 분양단지 프리미엄
+						</dd>
+					</dl>
+					<p></p>
+				</li>
+				<li class="c02">
+					<div>웨</div>
+					<dl>
+						<dt><span>웨</span>이를 다 품은 교통망</dt>
+						<dd>
+							1.2.3 순환로 / 17번 국도 / 강서 IC 등<br>
+							쾌속 교통망과 빠르게 통하는 주거단지
+						</dd>
+					</dl>
+					<p></p>
+				</li>
+				<li class="c03">
+					<div>이</div>
+					<dl>
+						<dt><span>이</span>상적인 브랜드 대단지</dt>
+						<dd>
+							청주 최대 스케일의<br>
+							총 3,949세대 초대형 랜드마크
+						</dd>
+					</dl>
+					<p></p>
+				</li>
+				<li class="c04">
+					<div>시</div>
+					<dl>
+						<dt><span>시</span>스템 남다른 특화설계</dt>
+						<dd>
+							공원형 단지 설계, 전 세대 남향위주배치,
+							조경면적 평균 약 40% 등 혁신단지
+						</dd>
+					</dl>
+					<p></p>
+				</li>
+				<li class="c05">
+					<div>티</div>
+					<dl>
+						<dt><span>티</span>나게 좋은 민간임대 혜택</dt>
+						<dd>
+							자격조건, 전세사기, 이사걱정, 세금부담 없는
+							10년간 안전하고 든든한 민간임대 아파트
+						</dd>
+					</dl>
+					<p></p>
+				</li>
+			</ol>
+			<div class="way way01"></div>
+			<div class="way way02"></div>
+			<div class="way way03"></div>
+			<div class="way way04"></div>
+			<div class="way way05"></div>
+		</div>
+	</div>
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="js/jquery.cycle2.min.js"></script>
+<script src="js/jquery.cycle2.carousel.js"></script>
+<script src="js/jquery.cycle2.swipe.js"></script>
+<script>
+$(function() {
+	// 텍스트 등장 애니메이션
+	setTimeout(function(){ $(".mcont01").addClass('on'); }, 0);
+	setTimeout(function(){ $(".mcont .t01").addClass('on'); }, 1000);
+	setTimeout(function(){ $(".mainp.newp .mcont_wrap ul li span .po01").addClass('on'); }, 1500);
+	setTimeout(function(){ $(".mainp.newp .mcont_wrap ul li span .po02").addClass('on'); }, 1800);
+	setTimeout(function(){ $(".mainp.newp .mcont_wrap ul li span .po03").addClass('on'); }, 2100);
+
+	// mcont04: 호버 효과
+	$('.mcont04 ol li').hover(
+		function() {
+			$('.mcont04 ol li').addClass('off');
+			$(this).addClass('on');
+		},
+		function() {
+			$('.mcont04 ol li').removeClass('off');
+			$(this).removeClass('on');
+		}
+	);
+	$('.mcont04 ol li').each(function(index) {
+		$(this).hover(
+			function() { $('.mcont04 .way0' + (index + 1)).addClass('on'); },
+			function() { $('.mcont04 .way0' + (index + 1)).removeClass('on'); }
+		);
+	});
+
+	// mcont04: 페이지 로드 시 바로 view 상태 적용 (풀페이지 없으므로)
+	setTimeout(() => $(".mcont04 ol").addClass('view'), 0);
+	setTimeout(() => $(".mcont04 ol").addClass('view02'), 0);
+	setTimeout(() => $(".mcont04 ol").addClass('view03'), 0);
+	setTimeout(() => $(".mcont04").addClass('view04'), 0);
+
+	// mcont03: 배경 전환
+	$('.mcont03 .pr_img .cycle-slideshow').on('cycle-update-view', function(e, opts) {
+		$('.mcont03 .wbg').removeClass('on');
+		for (let i = 1; i <= 4; i++) {
+			if ($('.mcont03 .w0' + i).hasClass('cycle-slide-active')) {
+				$('.mcont03 .wbg0' + i).addClass('on');
+			}
+		}
+	});
+});
+</script>
+</body>
+</html>
