@@ -12,8 +12,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;600&display=swap" rel="stylesheet">
 <style>
-/*메인*/
-html, body {position:relative; overflow-x:hidden;}
+/*메인 - WIX iframe 전용: 이중 스크롤 방지 */
+html, body {position:relative; overflow:hidden; width:100%; height:100%; margin:0; padding:0;}
 .mcont {position:relative !important; overflow:hidden !important;}
 .mcont h2 {font-size:4vw; font-family:'Seaside Display'; color:#15233d; width:100%;
 	text-align:center; line-height:100%;
@@ -42,13 +42,13 @@ html, body {position:relative; overflow-x:hidden;}
 .mainp.newp .mcont_wrap ul li span span+span+span {margin-left:6vw;}
 
 /* 각 섹션 높이 지정 */
-.mcont01 {overflow:hidden; position:relative !important; background:#fff; height:100vh;}
+.mcont01 {overflow:hidden; position:relative !important; background:#fff; height:800px;}
 .mcont01 .top_bg {width:100%; height:100%; position:absolute; top:0; left:0%;
 	transition:all 3s ease .1s; background-size:150% !important;
 }
 .mcont01 .bg01 {background:url('img/mimg_new.jpg')top center;}
 .mcont01 .cycle-slide-active.bg01 {background:url('img/mimg_new.jpg')bottom center;}
-.mcont01 .bg02 {background:url('img/mimg02.jpg')bottom -15vh center;}
+.mcont01 .bg02 {background:url('img/mimg02.jpg')bottom center;}
 .mcont01 .cycle-slide-active.top_bg {background-size:100% !important;}
 .mcont01 ul {z-index:1000;}
 .mcont01 .btn_roll {z-index:1000; position:absolute; bottom:3vw; left:40%; width:20%;}
@@ -57,14 +57,14 @@ html, body {position:relative; overflow-x:hidden;}
 }
 .mcont01 .page span.cycle-pager-active {background:#fff;}
 
-.mcont02 {background:url('img/mloca_n.jpg')#efefed no-repeat right bottom; background-size:90%; height:100vh;}
+.mcont02 {background:url('img/mloca_n.jpg')#efefed no-repeat right bottom; background-size:90%; height:600px;}
 .mcont02 h2 {position:relative; text-align:left; margin-bottom:1vw;}
 .mcont02 dl {position:absolute; bottom:15%; left:7%; text-align:left; color:#15233d; font-size:1.6vw; letter-spacing:-0.1vw;
 	line-height:130%; font-weight:500;
 }
 .mcont02 dl dd div {font-weight:400; font-size:1.2vw; margin-bottom:0.5vw;}
 
-.mcont03 {background:#fff; position:relative !important; height:100vh;}
+.mcont03 {background:#fff; position:relative !important; height:800px;}
 .mcont01 .arrow, .mcont03 .arrow {position:absolute; top:50%; width:4vw; border:#aaa 1px solid;
 	border-radius:5vw; overflow:hidden; padding:1vw; margin-top:0; cursor:pointer; z-index:100
 }
@@ -73,10 +73,10 @@ html, body {position:relative; overflow-x:hidden;}
 .mcont01 .arrow_l {left:10%;}
 .mcont03 .arrow_r {right:3%;}
 .mcont01 .arrow_r {right:10%;}
-.mcont03 .pr_img {position:absolute; top:24vh; left:13%; border:#15243d 0.25vw solid; border-radius:100vw;}
+.mcont03 .pr_img {position:absolute; top:150px; left:13%; border:#15243d 0.25vw solid; border-radius:100vw;}
 .mcont03 .pr_img .cycle-slideshow {position:absolute !important; top:0 !important; overflow:unset !important;}
 .mcont03 .pr_img .cycle-slide {position:absolute !important; top:0 !important;}
-.mcont03 .pr_img img {height:60vh; position:relative; z-index:110; opacity:0;}
+.mcont03 .pr_img img {height:500px; position:relative; z-index:110; opacity:0;}
 .mcont03 .pr_img .tt {position:absolute; top:42%; left:130%; z-index:3; color:#15233d; font-size:4.5vw;
 	font-family:'Seaside Display'; white-space: nowrap; transition:all 0.5s ease .1s; opacity:0;
 }
@@ -107,7 +107,7 @@ html, body {position:relative; overflow-x:hidden;}
 .mcont03 .pager span {width:1vw; height:1vw; background:none; border:#d4a187 1px solid; opacity:1; margin:0 0.5vw;}
 .mcont03 .pager span.cycle-pager-active {background:#d4a187;}
 
-.mcont04 {background:#111; height:100vh;}
+.mcont04 {background:#111; height:600px;}
 .mcont04.view04:before {height:0;}
 .mcont04 .way {position:absolute; width:100%; height:100%; top:0; left:0; content:''; opacity:0; transition:all 0.5s ease .1s;}
 .mcont04 .way.on {opacity:0.6;}
@@ -159,7 +159,7 @@ html, body {position:relative; overflow-x:hidden;}
 img {max-width:100%;}
 .mcont h2 {font-size:24px; margin-bottom:10px}
 
-.mcont01 {height:60vh;}
+.mcont01 {height:400px;}
 .mcont01 .top_bg {width:100%; height:100%; position:absolute; top:0; left:0%;
 	transition:all 3s ease .1s; transform: scale(1.2);
 }
@@ -179,11 +179,11 @@ img {max-width:100%;}
 .mainp.newp .mcont_wrap ul li span span+span {margin-left:23px;}
 .mainp.newp .mcont_wrap ul li span span+span+span {margin-left:46px;}
 
-.mcont02 {background: url(img/mloca_n.jpg) #efefed no-repeat top left -100px; background-size:150%; height:50vh;}
+.mcont02 {background: url(img/mloca_n.jpg) #efefed no-repeat top left -100px; background-size:150%; height:350px;}
 .mcont02 dl {font-size:14px; line-height:150%; letter-spacing:-1px; bottom:8%;}
 .mcont02 dl dd div {font-size:12px}
 
-.mcont03 {height:auto; min-height:70vh; padding-bottom:30px;}
+.mcont03 {height:500px; padding-bottom:30px;}
 .mcont03 .arrow {display:none;}
 .mcont03 .pager {top:90px; right:5%; width:50%; text-align:right;}
 .mcont03 .pager span {width:7px; height:7px; margin:0 0 0 10px; text-indent:-9999px; overflow:hidden;}
@@ -193,7 +193,7 @@ img {max-width:100%;}
 .mcont03 .pr_img .cycle-slide dl {font-size:11px; font-weight:400; left:16%; top:170px;}
 .mcont03 .pr_img .cycle-slide dl dt {font-size:14px;}
 
-.mcont04 {height:auto; min-height:50vh;}
+.mcont04 {height:auto;}
 .mcont04 ol {position:relative; width:100%; display:flex; flex-direction:column;}
 .mcont04 ol li {width:100%; height:auto; float:none; padding:30px 20px;}
 .mcont04 ol li:before {opacity:0.25;}
@@ -210,16 +210,16 @@ img {max-width:100%;}
 /* ===== 320px WIX 구형에디터 모바일 ===== */
 @media all and (max-width:320px) {
 body {font-size:12px;}
-.mcont01 {height:45vh;}
+.mcont01 {height:280px;}
 .mainp.newp .mcont_wrap ul li:first-child {font-size:16px; line-height:24px;}
 .mainp.newp .mcont_wrap ul li>span {font-size:18px;}
 
-.mcont02 {height:40vh; background-size:200%;}
+.mcont02 {height:250px; background-size:200%;}
 .mcont02 dl {font-size:12px; line-height:140%;}
 .mcont02 dl dd div {font-size:11px;}
 
-.mcont03 {min-height:60vh;}
-.mcont03 .pr_img {width:110px; height:110px; left:5%; top:30%;}
+.mcont03 {height:380px;}
+.mcont03 .pr_img {width:110px; height:110px; left:5%; top:100px;}
 .mcont03 .pr_img img {height:110px;}
 .mcont03 .pr_img .tt {font-size:22px; line-height:22px;}
 .mcont03 .pr_img .cycle-slide dl {font-size:10px; top:130px; left:10%;}
